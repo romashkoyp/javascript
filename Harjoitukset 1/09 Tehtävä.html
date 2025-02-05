@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 9</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 9</h1>
+      <script>
+        function getName() {
+          let rawNames = [];
+          
+          while (true) {
+            let name = prompt("Give a new name");
+            if (name) {
+              rawNames.push(name);
+            } else {
+              break;
+            }
+          }
+
+          console.log('You provided the following names:');
+
+          for (i of rawNames) {
+            console.log(`- name: ${i}`);
+          }
+
+          console.log('Names in alphabetical order:');
+
+          for (i of rawNames.sort()) {
+            console.log(`- name: ${i}`);
+          }
+        }
+
+        getName();
+      </script>
+  </body>
+</html>

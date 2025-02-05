@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 6</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 6</h1>
+      <script>
+        function lowestBiggestSumAverage(numbers) {
+          const lowestNumber = Math.min(...numbers);
+          const biggestNumber = Math.max(...numbers);
+
+          let sum = 0;
+          for (let i of numbers) {
+            // console.log(i);
+            sum += i;
+          }
+
+          let average = sum / numbers.length;
+
+          console.log(`The Lowest number is: ${lowestNumber}`);
+          console.log(`The Biggest number is: ${biggestNumber}`);
+          console.log(`The Sum is: ${sum}`);
+          console.log(`The Average is: ${average}`);
+        }
+
+        const numbers = [12, 3, 43, 1, 4, 75, 534];
+        lowestBiggestSumAverage(numbers);
+      </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 8</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 8</h1>
+      <script>
+        function palindrome(text) {
+          let cleanedText = text.toLowerCase().replace(/\s/g, '');
+          let reversedText = cleanedText.split('').reverse().join('');
+
+          return cleanedText === reversedText;
+        }
+
+        const text = 'How about this one';
+        if (palindrome(text)) {
+          console.log(`${text} -> yes`);
+        } else {
+          console.log(`${text} -> no`);
+        }
+      </script>
+  </body>
+</html>

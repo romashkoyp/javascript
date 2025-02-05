@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 7</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 7</h1>
+      <script>
+        function leapYear(year) {
+          if (year % 400 === 0) {
+            return true;
+          } else if (year % 100 === 0) {
+            return false;
+          } else if (year % 4 === 0) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+        const year = 1991;
+
+        if (leapYear(year)) {
+          console.log(`${year} on karkausvuosi.`);
+        } else {
+          console.log(`${year} ei ole karkausvuosi.`);
+        }
+      </script>
+  </body>
+</html>

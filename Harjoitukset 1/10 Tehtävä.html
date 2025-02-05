@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 10</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 10</h1>
+      <script>
+        function getPoints() {
+          let points = [];
+
+          for (let i = 0; i < 5; i++) {
+            let point = prompt("Give a points (1-20):");
+            points.push(parseInt(point));
+            console.log(`Added points: ${point}`);
+          }
+          
+          console.log('Given points:', points);
+
+          const sortedPoints = points.sort((a, b) => a - b);
+          console.log('Sorted points:', sortedPoints);
+
+          const allowedPoints = sortedPoints.slice(1, -1);
+          console.log('Allowed points:', allowedPoints);
+
+          let sum = 0;
+          for (let i of allowedPoints) {
+            sum += i;
+          }
+
+          console.log('Sum of points is:', sum);
+        }
+
+        getPoints();
+      </script>
+  </body>
+</html>

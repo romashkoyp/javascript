@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 6</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 6</h1>
+      <h2>Current Time</h2>
+
+      <div id="results"></div>
+      
+      <script>            
+          function time() {
+              const d = new Date();
+
+              const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+              const dayNumber = d.getDay();
+              const dayOfWeek = days[dayNumber];
+              const dateFormatted = d.toLocaleDateString('fi-FI');
+              const timeFormatted = d.toLocaleTimeString('en-GB');
+
+              document.getElementById('results').innerHTML = `
+                  <p>${dayOfWeek} ${dateFormatted}, ${timeFormatted}</p>
+              `;
+                }
+
+          function interval() {
+              setInterval(time, 1000);
+          }
+          
+          interval();
+      </script>
+  </body>
+</html>

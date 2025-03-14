@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 8</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 8</h1>
+      <h2>Vegetable Game</h2>
+
+      <p>
+          Welcome to use Vegetable Game. Each spin will cost 1 euros. You will win 2 euros, if<br>
+          you got two the same vegetables and 10 euros, if each of the vegetables are the same.<br><br>
+
+          Good Luck!
+      </p>
+
+      <button type="button" onclick="spin()">Spin</button><br><br>
+
+      <img src="img/1.png" id="fruit1" alt="Fruit 1">
+      <img src="img/2.png" id="fruit2" alt="Fruit 2">
+      <img src="img/3.png" id="fruit3" alt="Fruit 3"><br><br>
+
+      <div id="balance"></div>
+      <div id="results"></div>
+      
+      
+      <script>
+          let money = 100;
+          updateBalance();
+
+          function random() {
+              return Math.floor(Math.random() * 5) + 1;
+          }
+
+          function spin() {
+              if (money <= 0) {
+                  document.getElementById("results").textContent = "Sorry you don't have any euros left!";
+                  return;
+              }
+
+              const fruit1 = random();
+              const fruit2 = random();
+              const fruit3 = random();
+
+              money -= 1;
+
+              document.getElementById("fruit1").src = "img/" + fruit1 + ".png";
+              document.getElementById("fruit2").src = "img/" + fruit2 + ".png";
+              document.getElementById("fruit3").src = "img/" + fruit3 + ".png";
+
+              if (fruit1 === fruit2 && fruit2 === fruit3) {
+                  money += 10;
+                  document.getElementById("results").textContent = "Congratulations! You won 10 euros!";
+              } else if (fruit1 === fruit2 || fruit2 === fruit3 || fruit1 === fruit3) {
+                  money += 2;
+                  document.getElementById("results").textContent = "Congratulations! You won 2 euros!";
+              } else {
+                  document.getElementById("results").textContent = "Sorry! You didn't win anything!";
+                }
+
+              updateBalance();
+          }
+
+          function updateBalance() {
+              document.getElementById("balance").innerHTML = "Balance: " + money + " euros";
+          }
+      </script>
+  </body>
+</html>

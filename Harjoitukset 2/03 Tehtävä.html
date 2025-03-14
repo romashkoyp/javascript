@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 3</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+      <style>
+        .form-group, .button {
+            margin-bottom: 20px;
+        }
+        .label {
+            width:150px;
+            display: inline-block;
+        }
+    </style>
+  </head>
+  <body>
+      <h1>Tehtävä 3</h1>
+      <h2>ALV</h2>
+      <form id="form">
+          <div class="form-group">
+              <label for="n" class="label">Syötä ALViton hinta:</label>
+              <input type="number" id="n">
+              <span>€</span>
+          </div>
+
+          <button
+              type="button"
+              class="button"
+              onclick="tulos(form.n.value, form.n.value * 0.255)"
+            >
+              Laske yleinen ALV (25,5%)
+          </button>
+
+          <button
+              type="button"
+              class="button"
+              onclick="tulos(form.n.value, form.n.value * 0.14)"
+            >
+              Laske elintarvikeALV (14%)
+          </button>
+
+          <button
+              type="button"
+              class="button"
+              onclick="tulos(form.n.value, form.n.value * 0.10)"
+            >
+              Laske lääkeALV (10%)
+          </button>
+      </form>
+
+      <div id="results"></div>
+      
+      <script>
+        const tulos = (a, b) => {
+            document.getElementById('results').innerHTML = `
+                  Alviton hinta ${a} euroa<br><br>
+                  ALV kanta: ${b}%<br>
+                  ALVin määrä: ${b} euroa<br>
+                  ALVillinen hinta: ${parseFloat(a) + parseFloat(b)} euroa<br>
+              `;
+        };
+    </script>
+  </body>
+</html>

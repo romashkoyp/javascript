@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 4</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+      <style>
+        .form-group, .button {
+            margin-bottom: 20px;
+        }
+        .label {
+            width:150px;
+            display: inline-block;
+        }
+    </style>
+  </head>
+  <body>
+      <h1>Tehtävä 4</h1>
+      <h2>Guess Game</h2>
+      <form id="form">
+          <div class="form-group">
+              <label for="n" class="label">Give a number:</label>
+              <input type="number" id="n" min="1" max="100" required>
+              <button
+                  type="button"
+                  class="button"
+                  onclick="tulos(form.n.value, randomNumber)"
+                >
+                  Guess
+              </button>
+          </div>
+      </form>
+
+      <div id="results"></div>
+      
+      <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        // console.log(randomNumber);
+        let clickCounter = 0;
+        const tulos = (a,b) => {
+            clickCounter++;
+            // console.log(clickCounter);
+            if (a < randomNumber) {
+                document.getElementById('results').innerHTML = `
+                    <p>Number is bigger!</p>
+                `;
+            } else if (a > randomNumber) {
+                document.getElementById('results').innerHTML = `
+                    <p>Number is lower</p>
+                `;
+            } else {
+                document.getElementById('results').innerHTML = `
+                    <p>YES - you did it with ${clickCounter} guesses!</p>
+                `;
+            }
+        };
+    </script>
+  </body>
+</html>

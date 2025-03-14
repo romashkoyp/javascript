@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 5</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 5</h1>
+      <h2>Loading Page</h2>
+
+      <div id="results"></div>
+      
+      <script>
+          let a = 0;
+          function secondsCounter() {
+              if (a <= 100) {
+                  progressBar(a);
+                  a++;
+              }
+          }
+            
+          const progressBar = (a) => {
+              if (a < 100) {
+                  document.getElementById('results').innerHTML = `
+                      <p>Loading... ${a}%</p>
+                  `;
+              } else {
+                  document.getElementById('results').innerHTML = `
+                      <p>Loading finished!</p>
+                  `;
+              }
+          }
+
+          const interval = setInterval(secondsCounter, 1000);
+      </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 7</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 7</h1>
+      <h2>Concert</h2>
+
+      <div id="results"></div>
+      
+      <script>
+          let count = 0;
+
+          function addFireworks() {
+              if (count == 0) {
+                results = document.getElementById('results').innerHTML += "<p>OMG - Lady Gaga start singing!</p>";
+                count++;
+              } else if (count == 5) {
+                results = document.getElementById('results').innerHTML += "<p>WOW - It was the best concert in my life....</p>";
+                clearInterval(interval);
+              } else {
+                results = document.getElementById('results').innerHTML += "<p>Fireworks!";
+                count++;
+              }
+          }
+     
+          let interval = setInterval(addFireworks, 5000);
+
+      </script>
+  </body>
+</html>

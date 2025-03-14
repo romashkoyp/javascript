@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 1</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+      <style>
+        .form-group, .button {
+            margin-bottom: 20px;
+        }
+        .label {
+            width: 50px;
+            display: inline-block;
+        }
+    </style>
+  </head>
+  <body>
+      <h1>Tehtävä 1</h1>
+      <h2>Information</h2>
+      <form id="form">
+          <div class="form-group">
+              <label for="name" class="label">Name:</label>
+              <input type="text" id="name">
+          </div>
+
+          <div class="form-group">
+              <label for="age" class="label">Age:</label>
+              <input type="number" id="age">
+          </div>
+
+          <button type="button" class="button" onclick="message()">Show</button>
+      </form>
+      <div id="results"></div>
+      <script>
+          const message = () => {
+              const name = document.getElementById("name").value;
+              const age = document.getElementById("age").value;
+              const date = new Date(Date.now()).getFullYear() - age;
+              document.getElementById("results").innerHTML = `
+                  <h3>Hi ${name}!</h3>
+
+                  <p>
+                      It has been a pleasure working with you <b>${name}</b><br>
+                      all these years. Nice to see you are only <b>${date}</b> years old.<br>
+                      So we still have several years to work together.
+                  </p>
+                `;
+          }
+      </script>
+  </body>
+</html>

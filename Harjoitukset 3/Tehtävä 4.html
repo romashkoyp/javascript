@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 4</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 4</h1>
+      <script>
+        const fruits = {
+          Apple: 3,
+          Banana: 5,
+          Orange: 2,
+          Grape: 1
+          };
+          
+        let sum = 0;
+        for (const [key, value] of Object.entries(fruits)) {
+          sum += value;
+        };
+
+        console.log(`Fruits count is ${sum}`);
+      </script>
+  </body>
+</html>

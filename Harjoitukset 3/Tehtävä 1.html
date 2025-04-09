@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 1</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 1</h1>
+      <script>
+        // Define person object with basic properties
+        const person = {
+          firstName: "Kirsi",
+          lastName: "Kernell",
+          age: 30,
+          isStudent: false
+        };
+
+        // Loop through all key-value pairs in the person object
+        for (const [key, value] of Object.entries(person)) {
+          // Print each value to the console with a newline
+          console.log(`${value}\n`);
+        };
+      </script>
+  </body>
+</html>

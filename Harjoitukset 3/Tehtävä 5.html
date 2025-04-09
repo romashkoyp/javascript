@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 5</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 5</h1>
+      <script>
+          // Create a circle object with properties and methods
+          const circle = {
+            // Basic properties
+            radius: 5,
+            color: "red",
+            
+            // Method to calculate the area of the circle
+            getArea: function() {
+              return Math.PI * this.radius ** 2;
+            },
+            
+            // Method to calculate the circumference of the circle
+            getCircumference: function() {
+              return 2 * Math.PI * this.radius;
+            }
+          };
+
+          // Display basic information about the circle
+          console.log("Circle radius is " + circle.radius + " and it's color is " + circle.color);
+          // Calculate and display the area with 2 decimal places
+          console.log("Area: " + circle.getArea().toFixed(2));
+          // Calculate and display the circumference with 2 decimal places
+          console.log("Circumference: " + circle.getCircumference().toFixed(2));
+      </script>
+  </body>
+</html>

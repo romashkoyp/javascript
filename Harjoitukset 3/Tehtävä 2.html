@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 2</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 2</h1>
+      <script>
+        // Define person object with basic properties
+        const person = {
+          firstName: "Kirsi",
+          lastName: "Kernell",
+          age: 30,
+          isStudent: false
+        };
+
+        // Loop through all key-value pairs in the person object
+        for (const [key, value] of Object.entries(person)) {
+          // Print each value to the console with a newline
+          console.log(`${value}\n`);
+        };
+
+        // Update the person's age to 31
+        person.age="31";
+        
+        // Remove the isStudent property from the person object
+        delete person.isStudent;
+
+        // Add a new key-value pair to the person object
+        person.address = "Piippukatu 2";
+
+        for (const [key, value] of Object.entries(person)) {
+          console.log(`${value}\n`);
+        };
+      </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 6</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 6</h1>
+      <script>
+        // Person constructor function (ES5 style) for creating Person objects
+        function Person(name, age, phone, email) {
+          // Initialize the object's properties with the provided values
+          this.name = name;  
+          this.age = age;    
+          this.phone = phone;
+          this.email = email;
+
+          // Method to increase the person's age by 1
+          this.addAge = function() {
+            this.age++;
+          }
+
+          // Method to display all the person's information in the console
+          this.printResult = function() {
+            console.log(this.name + " " + this.age + " " + this.phone + " " + this.email);
+          }
+        }
+
+        // Create three Person objects with different information
+        let person1 = new Person("Mikko", 20, "040-1234567", "mikko@esimerkki.fi");
+        let person2 = new Person("Anna", 25, "050-9876543", "anna@esimerkki.fi");
+        let person3 = new Person("Juha", 30, "045-5556666", "juha@esimerkki.fi");
+
+        // Display person1's initial information
+        person1.printResult();
+        // Increase person1's age by 1
+        person1.addAge();
+        // Display person1's updated information
+        person1.printResult();
+
+        person2.printResult();
+        person2.addAge();
+        person2.printResult();
+
+        person3.printResult();
+        person3.addAge();
+        person3.printResult();
+      </script>
+  </body>
+</html>

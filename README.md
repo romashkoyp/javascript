@@ -1,16 +1,16 @@
 # JavaScript-ohjelmointi: Harjoitustehtäväväkirjanpito
 
-05.02.2025
+09.04.2025
 
 Romashko Yaroslav [AG3875]
 
 Ratkaisut: https://gitlab.labranet.jamk.fi/AG3875/javascript-ohjelmointi
 
-Harjoitustehtäväpisteet: 24
+Harjoitustehtäväpisteet: 93
 
 Kaikki tarjolla olleet harjoitustehtäväpisteet: 168
 
-24/168 = > 14 %
+93/168 = > 55 %
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -49,3 +49,21 @@ H2T6: 4/4p
 H2T7: 5/5p
 
 H2T8: 6/6p
+
+H3T1: 2/2p
+
+H3T2: 2/2p
+
+H3T3: 2/2p
+
+H3T4: 3/3p
+
+H3T5: 4/4p
+
+H3T6: 4/4p
+
+H3T7: 4/4p
+
+H3T8: 6/6p
+
+H3T9: 10/10p

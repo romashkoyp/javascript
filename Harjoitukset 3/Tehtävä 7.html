@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 7</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 7</h1>
+      <script>
+        // Library class - manages a collection of books, ES6
+        class Library {
+          constructor() {
+            // Initialize empty array to store book objects
+            this.books = [];
+          };
+
+          // Method to add a new book to the library
+          addBook(book) {
+            // Add the book to the books array
+            this.books.push(book);
+            console.log(`A new book is added to library:${book.name}`);
+          };
+
+          // Method to display all books in the library
+          printBooks() {
+            console.log("Library has a following books:");
+            // Iterate through each book and display its information
+            this.books.forEach(book => console.log(book.toString()));
+            console.log(`Library has ${this.books.length} books`);
+          };
+        };
+
+        // Book class - represents an individual book with properties, ES6
+        class Book {
+          constructor(name, author, publisher, year) {
+            this.name = name;          
+            this.author = author;      
+            this.publisher = publisher;
+            this.year = year;          
+          };
+
+          // Method to format book information as a string
+          toString() {
+            return `- book: ${this.name}, ${this.author}, ${this.publisher}, ${this.year}`;
+          };
+        }
+
+        // Create book instances
+        const book1 = new Book("JavaScript Bible", "Danny Goodman", "John Wiley & Sons", 1998);
+        const book2 = new Book("Learning Python", "Mark Lutz", "O'Reilly", 2013);
+        const book3 = new Book("Flutter in Action", "Eric Windmill", "Manning Publications", 2020);
+
+        // Create a new library
+        const library = new Library();
+
+        // Add books to library
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+
+        // Display all books in the library
+        library.printBooks();
+      </script>
+  </body>
+</html>

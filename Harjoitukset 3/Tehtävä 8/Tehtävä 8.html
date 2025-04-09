@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 8</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="css.css">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 8</h1>
+      <form id=form>
+        <table>
+        <tbody>
+           <tr><td>Tunnit: </td><td><input type="text" id="n1" placeholder="1" value="1"></td></tr>
+           <tr><td>Minuutit: </td><td><input type="text" id="n2"  placeholder="20" value="20"></td></tr>
+           <tr><td>Sekunnit: </td><td><input type="text" id="n3"  placeholder="0" value="0"></td></tr>
+           <tr><td>Kilometrit:</td><td><input type="text" id="n4"  placeholder="0" value="10"></td></tr>
+        </tbody>
+        </table>
+        <input
+            type="button" id="b1"
+            value="Laske vauhti km/h"
+            onclick="result(
+                form.n1.value,
+                form.n2.value,
+                form.n3.value,
+                form.n4.value
+            )">
+        <div id="results"></div>
+        </form>
+      <script src="script.js"></script>
+  </body>
+</html>

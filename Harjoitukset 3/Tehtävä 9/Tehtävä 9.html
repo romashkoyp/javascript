@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Harjoitukset 3 - Tehtävä 9</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="css.css">
+  </head>
+  <body>
+      <h1>Harjoitukset 3 - Tehtävä 9</h1>
+      <input type="text" id="display" class="display">
+      <br>
+      <div id="message" class="message"></div>
+      <div class="keypad">
+          <button class="key" onclick="addValue(1)">1</button>
+          <button class="key" onclick="addValue(2)">2</button>
+          <button class="key" onclick="addValue(3)">3</button>
+          <button class="key" onclick="addValue(4)">4</button>
+          <button class="key" onclick="addValue(5)">5</button>
+          <button class="key" onclick="addValue(6)">6</button>
+          <button class="key" onclick="addValue(7)">7</button>
+          <button class="key" onclick="addValue(8)">8</button>
+          <button class="key" onclick="addValue(9)">9</button>
+          <button 
+              class="key"
+              onclick="clearDisplay()">C</button>
+          <button class="key" onclick="addValue(0)">0</button>
+          <button
+              class="key key-go"
+              onclick="result(display.value)">GO</button>
+      </div>
+      <script src="script.js"></script>
+  </body>
+</html>

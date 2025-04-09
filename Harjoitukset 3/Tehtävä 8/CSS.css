@@ -1,0 +1,15 @@
+* {width: 200px; margin: auto}
+
+.box {
+  border: 1px dashed #000; padding: 15px; background-color: #adbed8; margin-top: 15px;
+}
+
+input[type="text"] {width: 60px;}
+
+button {
+  background-color: #069; border-radius: 5px;
+  color: #fff; margin-bottom: 5px; margin-top: 15px;
+  padding: 5px 15px; border: none;
+}
+
+h3 {text-align: center; margin-bottom: 15px;}

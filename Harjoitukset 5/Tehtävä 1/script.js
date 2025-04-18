@@ -2,10 +2,11 @@ function getHouses() {
   return fetch('housesData.json').then(response => response.json());
 };
 
-function renderHouses() {
+async function renderHouses() {
   let housediv = document.getElementById("houses");
 
-  getHouses().then(houses => {        
+  getHouses().then(houses => {
+    console.log(houses);      
     houses.forEach(house => {        
       let housecontainer = document.createElement('div');
       housecontainer.className = 'houseContainer';
@@ -20,7 +21,7 @@ function renderHouses() {
 
       let area = document.createElement('p');
       area.className = 'text';
-      area.innerHTML = house.size + 'm2';
+      area.innerHTML = house.size + ' m2';
 
       let text = document.createElement('p');
       text.className = 'text';
@@ -28,7 +29,7 @@ function renderHouses() {
 
       let price = document.createElement('p');
       price.className = 'text';
-      price.innerHTML = house.price + '€';
+      price.innerHTML = house.price + ' €';
 
       housecontainer.appendChild(image);
       housecontainer.appendChild(header);
@@ -40,4 +41,4 @@ function renderHouses() {
   });
 };
 
-renderHouses()
+renderHouses();

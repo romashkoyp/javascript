@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 7</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+      <div id="container" style="width: 400px; height: 400px; border: 1px solid black; position: relative;"></div>
+      <script>
+        const container = document.getElementById("container");
+        // Create an array to hold data for each ball
+        const ballsData = [];
+
+        // Create 100 balls
+        for (let i = 0; i < 100; i++) {
+          const ballElement = document.createElement("div");
+          ballElement.style.width = "50px";
+          ballElement.style.height = "50px";
+          ballElement.style.borderRadius = "50%";
+          ballElement.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+          ballElement.style.position = "absolute";
+
+          // Initial position for each ball randomly within the container
+          const initialX = Math.random() * 350; // Math.random() returns a number between 0 and 1
+          const initialY = Math.random() * 350;
+          ballElement.style.left = `${initialX}px`;
+          ballElement.style.top = `${initialY}px`;
+          container.appendChild(ballElement);
+
+          // Store data for this ball
+          ballsData.push({
+            element: ballElement,
+            posX: initialX,
+            posY: initialY,
+            velocityX: Math.random() * 2,
+            velocityY: Math.random() * 2
+          });
+        }
+
+        function update() {
+          // Loop through each ball's data
+          ballsData.forEach(ball => {
+            // Update position
+            ball.posX += ball.velocityX;
+            ball.posY += ball.velocityY;
+
+            // Boundary checking
+            if (ball.posX < 0 || ball.posX > 350) {
+                ball.velocityX = -ball.velocityX; // Reverse direction on X axis
+            }
+
+            if (ball.posY < 0 || ball.posY > 350) {
+                ball.velocityY = -ball.velocityY; // Reverse direction on Y axis
+            }
+
+            // Apply the new position to the specific ball element
+            ball.element.style.left = ball.posX + 'px';
+            ball.element.style.top = ball.posY + 'px';
+          });
+        }
+
+        // Start the animation
+        setInterval(update, 10); // Update every 10 milliseconds
+      </script>
+  </body>
+</html>

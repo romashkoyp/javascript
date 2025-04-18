@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 4</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+      <div style="display: flex; width: 50%; background-color: #afd1da; flex-direction: column; padding: 20px;">
+        <h1>Tehtävä 4</h1>
+        <form>
+          <label for="color" style="font-weight: bold;">Valitse juhlaväri:</label>
+          <br>
+          <select id="color" name="color">
+            <option value="#FFFF00">yellow</option>
+            <option value="#008000">green</option>
+            <option value="#0000FF">blue</option>
+            <option value="#FF0000">red</option>
+          </select>
+          <br><br>
+          <label for="juhlanimi" style="font-weight: bold;">Mikä juhla:</label>
+          <br>
+          <input type="text" id="juhlanimi" name="juhlanimi">
+          <br><br>
+          <button type="button" onclick="button()">Vaihda valittu taustaväri</button>
+        </form>
+        <br>
+        <div id="resultarea">
+          <p style="font-weight: bold;">Tulosalue</p>
+          <p id="result"></p>
+          <p id="result2"></p>
+        </div>
+      </div>
+      <script>
+        // Remove numbers from input
+        document.getElementById("juhlanimi").addEventListener("input", function() {
+          const x = document.getElementById("juhlanimi").value;
+          this.value = x.replace(/\d/g, '');
+        });
+
+        // Change background color
+        const button = () => {
+          document.getElementById("resultarea").style.backgroundColor = document.getElementById("color").value;
+          // Show selected color
+          document.getElementById("result").innerHTML = document.getElementById("color").value;
+        };
+        
+        // Show input
+        document.getElementById("juhlanimi").addEventListener("input", function() 
+          {document.getElementById("result2").innerHTML = this.value;});
+      </script>
+  </body>
+</html>

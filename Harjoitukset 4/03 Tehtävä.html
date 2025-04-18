@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>SimpleToDo</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>SimpleToDo</h1>
+      <span>ToDo</span>
+      <input type="text" id="todo">
+      <button onclick="addTodo()">Add</button>
+      <button onclick="removeAllTodos()">Remove</button>
+      <ul id="todolist"></ul>
+      <script>
+        // Create an empty array to store todos
+        let todos = [];
+
+        // Function to add a new todo
+        const addTodo = () => {
+          const todo = document.getElementById("todo").value;
+
+          // If todo is empty, return without adding it
+          if (todo === "") {
+            return;
+          };
+
+          // Add the todo to the array and clear the input field
+          todos.push(todo); // push method adds a new element to an array
+          document.getElementById("todo").value = ""; // clear input field
+          printTodos();
+        };
+
+        // Function to remove a todo, index is the position of the todo in the array
+        const removeTodo = (index) => {
+          // splice method removes elements from an array, where index is position and 1 is how many elements to remove
+          todos.splice(index, 1);
+          printTodos();
+        };
+
+        // Function to remove all todos
+        const removeAllTodos = () => {
+          todos = [];
+          printTodos();
+        };
+
+        // Function to print todos
+        const printTodos = () => {
+          // Get access to ul element by id
+          var todolist = document.getElementById("todolist");
+          // Clear ul element
+          todolist.innerHTML = "";
+          // Loop through todos array and create a new li element for each todo
+          for (var i = 0; i < todos.length; i++) {
+            // Create a new li element and add it to ul element
+            var li = document.createElement("li");
+            li.innerHTML = todos[i]; // add todo text to li element
+            li.dataset.index = i; // add index to li element as a data attribute
+            // Add a click event listener to li element to remove the todo when clicked
+            li.addEventListener("click", function() {
+              removeTodo(this.dataset.index);
+            });
+            // Add li element to ul element
+            todolist.appendChild(li); // in result <li data-index={index}>{todos[i]}</li>
+          };
+        };
+      </script>
+  </body>
+</html>

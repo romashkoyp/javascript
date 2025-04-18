@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Shopping list</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+      <h1>Shopping list</h1>
+      <form>
+        <label for="name" style="width: 100px; display: inline-block;">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="price" style="width: 100px; display: inline-block;">Price:</label>
+        <input type="number" id="price" name="price">
+        <br>
+        <label for="count" style="width: 100px; display: inline-block;">Count:</label>
+        <input type="number" id="count" name="count">
+        <br>
+        <br>
+        <button type="button" onclick="add()" style="margin-left: 104px;">Add</button>
+      </form>
+      <div id="items" style="margin-top: 20px; display: flex; flex-direction: row;"></div>
+      <br>
+      <script>
+        // Create an empty array to store items
+        let items = []; // Create an empty array to store items
+        // Function to add a new item
+        const add = () => {
+          if (document.getElementById("name").value === "" || document.getElementById("price").value === "" || document.getElementById("count").value === "") {
+            alert("Please fill all fields");
+            return;
+          }
+          // Get the values from the input fields
+          const name = document.getElementById("name").value;
+          const price = document.getElementById("price").value;
+          const count = document.getElementById("count").value;
+          // Create a new item object with the values
+          const item = { name, price, count };
+          // Add the item to the array
+          items.push(item);
+          // Clear the input fields
+          document.getElementById("name").value = "";
+          document.getElementById("price").value = "";
+          document.getElementById("count").value = "";
+          print();
+        };
+
+        const remove = (index) => {
+          // Remove the item from the array
+          items.splice(index, 1);
+          print();
+        };
+
+        const print = () => {
+          // Get access to the items div element by id
+          const itemsDiv = document.getElementById("items");
+          // Clear the items div element
+          itemsDiv.innerHTML = "";
+          // Loop through the items array and create a new div element for each item
+          items.forEach((item, index) => {
+            // Create a new div element
+            const itemDiv = document.createElement("div");
+            itemDiv.style.margin = "10px";
+            itemDiv.style.padding = "10px";
+            itemDiv.style.border = "1px solid black";
+            itemDiv.style.borderRadius = "10px";
+            itemDiv.style.width = "150px";
+            
+            // Create delete button first
+            const deleteButton = document.createElement("p");
+            deleteButton.textContent = "X";
+            deleteButton.style.textAlign = "right";
+            deleteButton.style.cursor = "pointer";
+            deleteButton.style.fontSize = "20px";
+            deleteButton.style.color = "red";
+            deleteButton.style.margin = "0";
+            deleteButton.onclick = () => remove(index);
+            
+            // Add button first, then content
+            itemDiv.appendChild(deleteButton);
+            
+            // Add content after the button
+            const content = document.createElement("div");
+            content.innerHTML = `
+              <p>Name: ${item.name}</p>
+              <p>Price: ${item.price}</p>
+              <p>Count: ${item.count}</p>
+            `;
+            itemDiv.appendChild(content);
+            
+            // Add the complete item div to the items container
+            itemsDiv.appendChild(itemDiv);
+          });
+        };
+
+      </script>
+  </body>
+</html>

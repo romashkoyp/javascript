@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 1</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <h1>Tehtävä 1</h1>
+      <div style="display: flex; gap: 20px; cursor: pointer; font-size: 20px; font-weight: bold;">
+        <span onclick="changeImage(1)">Image 1</span>
+        <span onclick="changeImage(2)">Image 2</span>
+        <span onclick="changeImage(3)">Image 3</span>
+      </div>
+      <img id="image" src="img/01.png" alt="Image 1">
+      <script>
+        const changeImage = (imageNumber) => {
+          document.getElementById("image").src = `img/0${imageNumber}.png`;
+        };
+      </script>
+  </body>
+</html>

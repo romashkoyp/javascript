@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+      <title>Tehtävä 6</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+      <div id="ball" style="cursor: pointer; width: 50px; height: 50px; border-radius: 50%; background-color: rgb(166, 0, 255); position: absolute;"></div>
+      <script>
+        // Boolean variable to track whether the ball is being tracked or not
+        let isTracking = false;
+
+        // Function to track the mouse coordinates and move the ball
+        function trackMouse(event) {
+          document.getElementById("ball").style.left = event.clientX - 25 + "px";
+          document.getElementById("ball").style.top = event.clientY - 25 + "px";
+        }
+        
+        // Add event listener to the ball to start/stop tracking mouse coordinates
+        // Every click on the ball will toggle the tracking
+        document.getElementById("ball").addEventListener("click", function(event) {
+          switch(isTracking) {
+            case false:
+              document.addEventListener("mousemove", trackMouse);
+              isTracking = true;
+              break;
+            case true:
+              document.removeEventListener("mousemove", trackMouse);
+              isTracking = false;
+              break;
+          }
+        });
+      </script>
+  </body>
+</html>

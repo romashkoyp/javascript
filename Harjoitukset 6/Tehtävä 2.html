@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+</head>
+<body>
+  <div id="map" style="height: 100vh; width: 100%; margin: auto;">
+    <div id="continer" style="position: absolute; top: 100px; left: 10px; background-color: white; padding: 10px; border: 1px solid black; z-index: 1000; border-radius: 5px;">
+      <h1>Add a new favorite place</h1>
+      <form>
+        <label for="name" style="width: 100px; display: inline-block;">Name:</label>
+        <input type="text" id="name" style="width: 200px;" placeholder="City name">
+        <br>
+        <label for="lat" style="width: 100px; display: inline-block;">Latitude:</label>
+        <input type="number" min="-90" max="90" id="lat" style="width: 200px;" placeholder="Latitude">
+        <br>
+        <label for="lon" style="width: 100px; display: inline-block;">Longitude:</label>
+        <input type="number" min="-180" max="180" id="lon" style="width: 200px;" placeholder="Longitude">
+        <br>
+        <button type="button" onclick="addPlace()" style="margin-left: 104px; margin-top: 10px;">Add</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+  <script>
+    var map = L.map('map').setView([64.2240872, 27.7334227], 3);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Create an array to hold places and their coordinates
+    let places = [];
+
+    // Get data from form and put it to places array
+    function addPlace() {
+      const name = document.getElementById('name').value;
+      const lat = document.getElementById('lat').value;
+      const lon = document.getElementById('lon').value;
+
+      // Check if the form fields are empty
+      if (name === '' || lat === '' || lon === '') {
+        alert('Please fill in all fields');
+        return;
+      };
+
+      // Check if the coordinates are valid
+      if (lat > 90 || lat < -90 || lon > 180 || lon < -180) {
+        alert('Please enter valid coordinates');
+        return;
+      };
+
+
+      // Add the place and coordinates to the places array and the local storage
+      places.push({ name, lat, lon });
+      localStorage.setItem('places', JSON.stringify(places));
+
+      // Clear the form fields
+      document.getElementById('name').value = '';
+      document.getElementById('lat').value = '';
+      document.getElementById('lon').value = '';
+      getPlaces();
+    };
+
+    // Get places from local storage and add them to the map
+    function getPlaces() {
+      places = JSON.parse(localStorage.getItem('places'));
+      if (places) {
+        places.forEach(place => {
+          L.marker([place.lat, place.lon]).addTo(map).bindPopup(place.name);
+        });
+      };
+    };
+
+    getPlaces();
+  </script>
+</body>
+</html>

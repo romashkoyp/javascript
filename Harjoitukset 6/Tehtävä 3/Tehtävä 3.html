@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GolfMap</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+</head>
+<body>
+  <div id="map" style="height: 100vh; width: 100%; margin: auto;">
+    <div id="container" style="position: absolute; top: 100px; left: 10px; background-color: white; padding: 10px; border: 1px solid black; z-index: 1000; border-radius: 5px;">
+    </div>
+  </div>
+  <script src="https://kit.fontawesome.com/91c7a109fb.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script>
+    var map = L.map('map').setView([62.160871, 25.6416672], 7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Fetch data from JSON file
+    function getPlacesData() {
+      return fetch('golf.json').then(response => response.json());
+    };
+
+    // Render data to the map
+    async function renderGolfPlaces() {
+      let placesData = await getPlacesData();
+      if (placesData.length === 0) {
+        return;
+      };
+
+      // Create a marker cluster group
+      const markers = L.markerClusterGroup();
+      
+      // Loop through the data and add markers to the cluster group
+      placesData.forEach(place => {        
+        const marker = L.marker([place.lat, place.lng])
+          .bindPopup(`
+            <h3>${place.course}</h3>
+            <p>
+              <i class="fa-solid fa-house"></i>
+              ${place.address}
+            </p>
+            <p>
+              <i class="fa-solid fa-phone"></i>
+              ${place.phone}
+            </p>
+            <p>
+              <i class="fa-regular fa-envelope"></i>
+              ${place.email}
+            </p>
+            <p>
+              <i class="fa-solid fa-globe"></i>
+              <a href="${place.web}">${place.web}</a>            
+            </p>
+            <p>${place.text}</p>
+          `);
+        
+        // Add marker to cluster group
+        markers.addLayer(marker);
+      });
+
+      // Add the cluster group to the map
+      map.addLayer(markers);
+    };
+
+    renderGolfPlaces();
+  </script>
+</body>
+</html>

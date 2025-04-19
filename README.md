@@ -5,6 +5,7 @@
 Romashko Yaroslav [AG3875]
 
 Ratkaisut: https://gitlab.labranet.jamk.fi/AG3875/javascript-ohjelmointi
+Websivut: https://romashkoyp.github.io/javascript/
 
 Harjoitustehtäväpisteet: 168
 

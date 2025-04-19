@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Tehtävä 2</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body id="container" style="width: 600px; margin: auto;">
+      <h1>Chuck Norris Facts</h1>
+      <div id="text">
+          <p>Chuck Norris facts are satirical factoids about martial
+            artist and actor Chuck Norris that have become an Internet
+            phenomenon and as a result have become widespread in popular
+            culture. The 'facts' are normally absurd hyperbolic claims about
+            Norris' toughness, attitude, virility, sophistication, and masculinity.
+          </p>
+          <p>
+            Chuck Norris facts have spread around the world, leading
+            not only to translated versions, but also spawning localized
+            versions mentioning country-specific advertisements and other
+            Internet phenomena. Allusions are also sometimes made to his
+            use of roundhouse kicks to perform seemingly any task, his
+            large amount of body hair with specific regard to his beard,
+            and his role in the action television series Walker, Texas Ranger.
+          </p>
+      </div>
+      <br>
+      <input type="button" value="Get a random joke" onclick="renderJoke()">
+      <br>
+      <p id="joke"></p>
+      <script>
+        function getJoke() {
+          return fetch('https://api.chucknorris.io/jokes/random').then(response => response.json());
+        };
+
+        async function renderJoke() {
+          let joke = await getJoke();
+          document.getElementById('joke').innerHTML = '';
+          document.getElementById('joke').innerHTML = joke.value;
+        };
+      </script>
+  </body>
+</html>

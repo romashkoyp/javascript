@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Tehtävä 3</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
+  </head>
+  <body id="container" style="width: 600px; margin: auto;">
+      <h1>Bitcoin Value Fetcher</h1>
+      <p>Click the button to get the current value of Bitcoin in euros.</p>
+      <input type="button" value="Get Bitcoin Value" onclick="renderBitcoinValue()">
+      <p id="bitcoinValue"></p>
+      <script>
+        // Get current day
+        const today = new Date();
+
+        function getBitcoinValue() {
+          return fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=EUR').then(response => response.json());
+        };
+
+        async function renderBitcoinValue() {
+          let bitcoinValue = await getBitcoinValue();
+          document.getElementById('bitcoinValue').innerHTML = '';
+          document.getElementById('bitcoinValue').innerHTML = `${today.toLocaleDateString('fi-FI')}: ${bitcoinValue.BTC.EUR} euros`
+        };
+      </script>
+  </body>
+</html>
